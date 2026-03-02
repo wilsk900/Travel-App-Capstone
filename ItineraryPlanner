@@ -1,0 +1,45 @@
+import streamlit as st
+import pandas as pd
+
+st.title('Itinerary Planner')
+
+#upload for excel dataset
+uploaded_file = st.file_uploader('Upload your Excel file: ', type=['xlsx'])
+
+if uploaded_file:
+    #read excel to be viewed as data
+    df = pd.read_excel(uploaded_file)
+
+    st.subheader('Full Dataset')
+    st.dataframe(df)
+
+    #Pivot
+    pivot_table = pd.pivot_table(
+        df,
+        values='Activity',
+        index='Location',
+        columns='Category',
+        aggfunc='count',
+        fill_value=0
+
+        )
+
+    st.subheader("Available Activities (Pivot Table)")
+    
+    # Show pivot table
+    st.dataframe(pivot_table)
+    
+    # -----------------------
+    # User Location Choice
+    # -----------------------
+    location_choice = st.selectbox("Choose a location:", df["Location"].unique())
+    
+    st.subheader(f"Suggested Itinerary for {location_choice}")
+    
+    selected_activities = df[df["Location"] == location_choice]
+    
+    if not selected_activities.empty:
+        for index, row in selected_activities.iterrows():
+            st.write(f"• {row['Activity']} ({row['Duration_Hours']} hrs) - {row['Category']}")
+    else:
+        st.write("No activities available for this location.")
