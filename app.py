@@ -75,7 +75,7 @@ if not morning.empty:
 
 if not afternoon.empty:
     st.write(f"Afternoon: {afternoon.iloc[0]['Activity']}")
-      itinerary.append({"Time": "Afternoon", "Activity": afternoon.iloc[0]["Activity"]})
+    itinerary.append({"Time": "Afternoon", "Activity": afternoon.iloc[0]["Activity"]})
 
 if not evening.empty:
     st.write(f"Evening: {evening.iloc[0]['Activity']}")
