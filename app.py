@@ -50,7 +50,7 @@ else:
 
 st.title("Travel Itinerary Generator")
 df = pd.read_excel("countrydataset.xlsx")
-st.write("Dataset Loaded)
+st.write("Dataset Loaded")
 
 #userchoice
 location = st.selectbox("Choose a location:", df["Location"].unique())
