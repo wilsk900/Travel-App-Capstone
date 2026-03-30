@@ -54,7 +54,7 @@ st.write("Dataset Loaded")
 
 #userchoice
 location = st.selectbox("Choose a location:", df["Location"].unique())
-activity_type = st.selectionbox("Choose an activity type:", df["Category"].unique())
+activity_type = st.selectbox("Choose an activity type:", df["Category"].unique())
 
 #filter for userchoice
 fitlered_df = df[
