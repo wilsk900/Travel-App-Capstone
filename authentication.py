@@ -1,6 +1,7 @@
 import pandas as pd
 import bcrypt
 import os
+from trip_creation import create_trip
 
 FILE_NAME = "users.xlsx"
 
