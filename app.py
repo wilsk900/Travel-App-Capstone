@@ -48,7 +48,9 @@ else:
             else:
                 st.error("Invalid login")
 
-st.title("Travel Itinerary Generator")
+
+menu = st.sidebar.selectbox("Travel Itinerary Generator")
+
 df = pd.read_excel("countrydataset.xlsx")
 st.write("Dataset Loaded")
 
@@ -56,6 +58,8 @@ st.write("Dataset Loaded")
 location = st.selectbox("Choose a location:", df["Location"].unique())
 activity_type = st.selectbox("Choose an activity type:", df["Category"].unique())
 
+'''
+#come back and figure out#
 #filter for userchoice
 fitlered_df = df[
     (df["Location"] == location)
@@ -84,3 +88,4 @@ if not evening.empty:
 itinerary = []
 itinerary_df = pd.DataFrame(itinerary)
 
+'''
