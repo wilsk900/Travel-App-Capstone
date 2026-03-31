@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from datetime import date
-from trip_creation import create_trip
 
 username = "test_user" #will get rid of when auth connected
 
