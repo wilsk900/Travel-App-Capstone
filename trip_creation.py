@@ -10,7 +10,7 @@ DESTINATIONS = ["Thailand", "Jamaica", "Miami"]
 
 def create_trip(username):
 
-    st.header("Crete a New Trip")
+ st.header("Create a New Trip")
 
     destination = st.selectbox(
         "Choose Destination",
