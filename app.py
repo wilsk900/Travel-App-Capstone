@@ -49,7 +49,7 @@ else:
                 st.error("Invalid login")
 
 
-menu = st.sidebar.selectbox("Travel Itinerary Generator")
+travel_menu = st.sidebar.selectbox("Travel Itinerary Generator")
 
 df = pd.read_excel("countrydataset.xlsx")
 st.write("Dataset Loaded")
