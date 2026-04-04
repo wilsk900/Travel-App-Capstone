@@ -9,13 +9,11 @@ create_trip(username)
 DESTINATIONS = ["Thailand", "Jamaica", "Miami"]
 
 def create_trip(username):
-
- st.header("Create a New Trip")
-
- destination = st.selectbox(
-     "Choose Destination",
-     DESTINATIONS)
- )
+    st.header("Create a New Trip")
+    destination = st.selectbox(
+        "Choose Destination",
+        DESTINATIONS
+    )
 
  start_date = st.date_input("Start Date", date.today())
  end_date = st.date_input("End Date", date.today())
