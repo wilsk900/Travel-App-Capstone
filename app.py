@@ -48,44 +48,44 @@ else:
             else:
                 st.error("Invalid login")
 
-
-travel_menu = st.sidebar.selectbox("Travel Itinerary Generator")
+#for itinerary generator tab
+navigation = st.sidebar.selectbox( "Travel Itinerary Generator", ["Your Itinerary"])
 
 df = pd.read_excel("countrydataset.xlsx")
 st.write("Dataset Loaded")
 
-#userchoice
-location = st.selectbox("Choose a location:", df["Location"].unique())
-activity_type = st.selectbox("Choose an activity type:", df["Category"].unique())
+if navigation == "Your Itinerary":
+    st.header("Saved Itinerary")
+    
+    # userchoice
+    location = st.selectbox("Choose a location:", df["Location"].unique())
+    activity_type = st.selectbox("Choose an activity type:", df["Category"].unique())
 
-'''
-#come back and figure out#
-#filter for userchoice
-fitlered_df = df[
-    (df["Location"] == location)
-    (df["Category"] == activity_type)
-]
-
-#itinerary file
-st.subheader('Your Itinerary')
-
-morning = filtered_df[filtered_df["Time"] == "Morning"]
-afternoon = filtered_df[filtered_df["Time"] == "Afternoon"]
-evening = filtered_df[filtered_df["Time"] == "Evening"]
-
-if not morning.empty:
-    st.write(f"Morning: {morning.iloc[0]['Activity']}")
-    itinerary.append({"Time": "Morning", "Activity": morning.iloc[0]["Activity"]})
-
-if not afternoon.empty:
-    st.write(f"Afternoon: {afternoon.iloc[0]['Activity']}")
-    itinerary.append({"Time": "Afternoon", "Activity": afternoon.iloc[0]["Activity"]})
-
-if not evening.empty:
-    st.write(f"Evening: {evening.iloc[0]['Activity']}")
-    itinerary.append({"Time": "Evening", "Activity": evening.iloc[0]["Activity"]})
+    filtered_df = df[
+        (df["Location"] == location) &
+        (df["Category"] == activity_type)
+    ]
 
 itinerary = []
-itinerary_df = pd.DataFrame(itinerary)
 
-'''
+if not filtered_df.emtpy: 
+        morning = filtered_df[filtered_df["Time"] == "Morning"]
+        afternoon = filtered_df[filtered_df["Time"] == "Afternoon"]
+        evening = filtered_df[filtered_df["Time"] == "Evening"]
+
+        if not morning.empty:
+            st.write(f"Morning: {morning.iloc[0]['Activity']}")
+            itinerary.append({"Time": "Morning", "Activity": morning.iloc[0]["Activity"]})
+
+        if not afternoon.empty:
+            st.write(f"Afternoon: {afternoon.iloc[0]['Activity']}")
+            itinerary.append({"Time": "Afternoon", "Activity": afternoon.iloc[0]["Activity"]})
+
+        if not evening.empty:
+            st.write(f"Evening: {evening.iloc[0]['Activity']}")
+            itinerary.append({"Time": "Evening", "Activity": evening.iloc[0]["Activity"]})
+
+        itinerary_df = pd.DataFrame(itinerary)
+
+else:
+    st.warning("No activites category found for this entry. Try a different category")
