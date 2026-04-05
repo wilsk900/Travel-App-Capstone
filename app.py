@@ -68,7 +68,7 @@ if navigation == "Your Itinerary":
 
 itinerary = []
 
-if not filtered_df.emtpy: 
+if not filtered_df.empty: 
         morning = filtered_df[filtered_df["Time"] == "Morning"]
         afternoon = filtered_df[filtered_df["Time"] == "Afternoon"]
         evening = filtered_df[filtered_df["Time"] == "Evening"]
