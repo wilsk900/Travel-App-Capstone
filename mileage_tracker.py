@@ -34,8 +34,8 @@ def mileage():
         ------------------------------
 
         """
-            st.session_state['mileage_summary'] = summary
-            st.write("Summary saved)
+        st.session_state['mileage_summary'] = summary
+        st.write("Summary saved)
             
 
         st.text(summary)
