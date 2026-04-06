@@ -7,9 +7,7 @@ initialize_database()
 
 st.title("Travel Planner App")
 
-st.sidebar.title("Travel Itinerary Generator")
-
-menu = st.sidebar.selectbox("Menu", ["Login", "Register"])
+menu = st.sidebar.selectbox("Menu", ["Login", "Register", "Travel Itinerary Generator"])
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
