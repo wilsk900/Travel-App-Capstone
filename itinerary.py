@@ -8,37 +8,33 @@ def show_itinerary(filtered_df):
     st.write("Test dataset loaded")
 
     #userchoice
-    location = st.selectbox("Choose a location:", df["Location"].unique())
-    activity_type = st.selectbox("Choose an activity type:", df["Category"].unique())
-    time = st.selectbox("Choose a time of day:", df["Time"].unique())
+import streamlit as st
+import pandas as pd
 
-    filtered_df = df[
-        (df["Location"] == location) &
-        (df["Category"] == activity_type) &
-        (df["Time"] == time)
-        ]
+def show_itinerary(df):
+    st.header("Daily Itinerary Builder")
 
+    location = st.selectbox("Where are you heading?", df["Location"].unique())
+    loc_df = df[df["Location"] == location]
+    
+    morn_opt = loc_df[loc_df["Time"] == "Morning"]["Activity"].tolist()
+    after_opt = loc_df[loc_df["Time"] == "Afternoon"]["Activity"].tolist()
+    even_opt = loc_df[loc_df["Time"] == "Evening"]["Activity"].tolist()
 
-    itinerary = []
+    m = st.selectbox("Morning Activity", ["None"] + morn_opt)
+    a = st.selectbox("Afternoon Activity", ["None"] + after_opt)
+    e = st.selectbox("Evening Activity", ["None"] + even_opt)
 
-    if not filtered_df.empty:
-        morning = filtered_df[filtered_df["Time"] == "Morning"]
-        afternoon = filtered_df[filtered_df["Time"] == "Afternoon"]
-        evening = filtered_df[filtered_df["Time"] == "Evening"]
+    final_itinerary = f"Trip to {location}\n"
+    if m != "None": final_itinerary += f"- Morning: {m}\n"
+    if a != "None": final_itinerary += f"- Afternoon: {a}\n"
+    if e != "None": final_itinerary += f"- Evening: {e}\n"
 
-        if not morning.empty:
-            st.write(f"Morning: {morning.iloc[0]['Activity']}")
-            itinerary.append({"Time": "Morning", "Activity": morning.iloc[0]["Activity"]})
-
-        if not afternoon.empty:
-            st.write(f"Afternoon: {afternoon.iloc[0]['Activity']}")
-            itinerary.append({"Time": "Afternoon", "Activity": afternoon.iloc[0]["Activity"]})
-
-        if not evening.empty:
-            st.write(f"Evening: {evening.iloc[0]['Activity']}")
-            itinerary.append({"Time": "Evening", "Activity": evening.iloc[0]["Activity"]})
-
-        itinerary_df = pd.DataFrame(itinerary)
-
-    else:
-        st.warning("No activites category found for this entry. Try a different category")
+    # saved itinerary and download
+    st.text(final_itinerary)
+    
+    st.download_button(
+        label="Save to .txt file",
+        data=final_itinerary,
+        file_name="my_itinerary.txt"
+    )
