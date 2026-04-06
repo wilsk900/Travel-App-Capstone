@@ -2,7 +2,7 @@ import streamlit as st
 from authentication import initialize_database, register_user, login_user
 import pandas as pd
 from itinerary import show_itinerary
-from mileage import mileage_tracker
+from mileage_tracker import mileage
 
 initialize_database()
 
@@ -61,6 +61,6 @@ else:
         show_itinerary(filtered_df)
 
     elif menu == "Mileage Tracker":
-        mileage_tracker()
+        mileage()
         
 
