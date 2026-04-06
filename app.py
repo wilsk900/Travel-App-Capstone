@@ -60,10 +60,12 @@ if navigation == "Your Itinerary":
     # userchoice
     location = st.selectbox("Choose a location:", df["Location"].unique())
     activity_type = st.selectbox("Choose an activity type:", df["Category"].unique())
+    time = st.selectbox("Choose a time of day:", df["Time"].unique())
 
     filtered_df = df[
         (df["Location"] == location) &
-        (df["Category"] == activity_type)
+        (df["Category"] == activity_type) &
+        (df["Time"] == time)
     ]
 
 itinerary = []
