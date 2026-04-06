@@ -14,7 +14,7 @@ except:
     st.error("Could not find the data file!")
     filtered_df = pd.DataFrame()
 
-menu = st.sidebar.selectbox("Menu", ["Login", "Register", "Travel Itinerary Generator"])
+menu = st.sidebar.selectbox("Menu", ["Login", "Register", "Travel Itinerary Generator", "Milage Tracker"])
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
@@ -60,5 +60,8 @@ else:
 
         show_itinerary(filtered_df)
         st.write("Fetching your travel plans...")
+
+    elif menu == "Milage Tracker":
+        
 
     
