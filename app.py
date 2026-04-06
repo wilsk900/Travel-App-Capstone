@@ -61,6 +61,6 @@ else:
         show_itinerary(filtered_df)
 
     elif menu == "Mileage Tracker":
-        mileage_tracker
+        mileage_tracker()
         
 
