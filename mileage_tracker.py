@@ -22,13 +22,21 @@ def mileage():
     
     st.table(breakdown)
 
-    summary = f"Total travel distance at {speed} mph for {time_traveled} hours: {total_dist} miles."
-    
-    full_itin_mile = f"
-    Trip Itinerary\n____________\n{final_itinerary}\n\nTransportation Summary\n___________\n{summary}
-    "
-    #to save to itinerary file
-    if st.download_button("Add mileage calculations to intinerary"):
-        data = full_itin_mile,
-        file_name = "full_trip_plan.txt",
-        mime = "text/plain"
+# to save itinerary file
+    if st.button("Add mileage calculations to itinerary"):
+        summary = f"""
+        ------------------------------
+        Transportation Summary
+        Total Distance: {total_dist} miles
+        Average Speed: {speed} mph
+        Travel Time: {time_traveled} hours
+        
+        Breakdown Table: {st.table(breakdown)}
+        ------------------------------
+
+        """
+            st.session_state['mileage_summary'] = summary
+            st.write("Summary saved)
+            
+
+        
