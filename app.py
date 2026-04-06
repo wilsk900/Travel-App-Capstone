@@ -5,7 +5,7 @@ from itinerary import show_itinerary
 
 initialize_database()
 
-st.title("Travel Planner App")
+st.title("Travel Planner App\n______________________")
 
 try:
     df = pd.read_excel("countrydataset.xlsx")
