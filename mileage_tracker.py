@@ -1,4 +1,5 @@
 import streamlit as st
+import show_itinerary as itinerary
 
 def mileage():
     st.header("Mileage Tracker")
@@ -22,9 +23,7 @@ def mileage():
     
     st.table(breakdown)
 
-# to save itinerary file
-    if st.button("Add mileage calculations to itinerary"):
-        summary = f"""
+    summary = f"""
         ------------------------------
         Transportation Summary
         Total Distance: {total_dist} miles
@@ -39,4 +38,16 @@ def mileage():
             st.write("Summary saved)
             
 
-        
+        st.text(summary)
+                     
+
+    with open("my_itinerary.txt", "r") as f:
+        itinerary_content = f.read()
+    combined_data = f"{summary}\n\n{itinerary_content}"
+    
+    st.download_button(
+        label="Add mileage calculations to itinerary",
+        data=combined_data,
+        file_name="full_travel_plan.txt",
+        mime="text/plain"
+    )
