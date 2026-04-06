@@ -7,7 +7,7 @@ initialize_database()
 
 st.title("Travel Planner App")
 
-st.sidebar.selectbox("Travel Itinerary Generator")
+st.sidebar.title("Travel Itinerary Generator")
 
 menu = st.sidebar.selectbox("Menu", ["Login", "Register"])
 
@@ -51,7 +51,9 @@ else:
             else:
                 st.error("Invalid login")
 
-#for itinerary tab
-if menu == "Travel Itinerary Generator":
-    show_ititnerary(filitered_df)
+    elif menu == "Travel Itinerary Generator":
+
+        show_itinerary(filtered_df)
+        st.write("Fetching your travel plans...")
+
     
