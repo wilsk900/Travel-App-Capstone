@@ -2,6 +2,7 @@ import streamlit as st
 from authentication import initialize_database, register_user, login_user
 import pandas as pd
 from itinerary import show_itinerary
+from mileage import mileage_tracker
 
 initialize_database()
 
@@ -14,7 +15,7 @@ except:
     st.error("Could not find the data file!")
     filtered_df = pd.DataFrame()
 
-menu = st.sidebar.selectbox("Menu", ["Login", "Register", "Travel Itinerary Generator", "Milage Tracker"])
+menu = st.sidebar.selectbox("Menu", ["Login", "Register", "Travel Itinerary Generator", "Mileage Tracker"])
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
@@ -57,11 +58,9 @@ else:
                 st.error("Invalid login")
 
     elif menu == "Travel Itinerary Generator":
-
         show_itinerary(filtered_df)
-        st.write("Fetching your travel plans...")
 
-    elif menu == "Milage Tracker":
+    elif menu == "Mileage Tracker":
+        mileage_tracker
         
 
-    
