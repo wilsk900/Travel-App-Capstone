@@ -29,6 +29,6 @@ def mileage():
     "
     #to save to itinerary file
     if st.download_button("Add mileage calculations to intinerary"):
-        data = full_file_content,
-        file_namee = "full_trip_plan.txt",
+        data = full_itin_mile,
+        file_name = "full_trip_plan.txt",
         mime = "text/plain"
