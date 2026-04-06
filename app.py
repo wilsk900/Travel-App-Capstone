@@ -7,6 +7,13 @@ initialize_database()
 
 st.title("Travel Planner App")
 
+try:
+    df = pd.read_excel("countrydataset.xlsx")
+    filtered_df = df # Replace this with your actual filtering logic
+except:
+    st.error("Could not find the data file!")
+    filtered_df = pd.DataFrame()
+
 menu = st.sidebar.selectbox("Menu", ["Login", "Register", "Travel Itinerary Generator"])
 
 if "logged_in" not in st.session_state:
