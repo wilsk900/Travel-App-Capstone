@@ -20,15 +20,18 @@ def show_itinerary(df):
     morn_opt = loc_df[loc_df["Time"] == "Morning"]["Activity"].tolist()
     after_opt = loc_df[loc_df["Time"] == "Afternoon"]["Activity"].tolist()
     even_opt = loc_df[loc_df["Time"] == "Evening"]["Activity"].tolist()
+    food_opt = loc_df[loc_df["Time"] == "Food"]["Activity"].tolist()
 
     m = st.selectbox("Morning Activity", ["None"] + morn_opt)
     a = st.selectbox("Afternoon Activity", ["None"] + after_opt)
     e = st.selectbox("Evening Activity", ["None"] + even_opt)
+    f = st.selectbox("Food Option", ["None"] + food_opt)
 
     final_itinerary = f"Trip to {location}\n"
     if m != "None": final_itinerary += f"- Morning: {m}\n"
     if a != "None": final_itinerary += f"- Afternoon: {a}\n"
     if e != "None": final_itinerary += f"- Evening: {e}\n"
+    if f != "None": final_itinerary += f"- Food Option: {f}\n"
 
     # saved itinerary and download
     st.text(final_itinerary)
