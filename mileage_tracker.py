@@ -1,5 +1,5 @@
 import streamlit as st
-import show_itinerary as itinerary
+import itinerary as show_itinerary
 
 def mileage():
     st.header("Mileage Tracker")
