@@ -22,6 +22,7 @@ if "logged_in" not in st.session_state:
 
 if st.session_state.logged_in:
     st.success("You are logged in!")
+    st.rerun()
 
     if st.button("Logout"):
         st.session_state.logged_in = False
