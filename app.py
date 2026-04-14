@@ -15,18 +15,19 @@ except:
     st.error("Could not find the data file!")
     filtered_df = pd.DataFrame()
 
-menu = st.sidebar.selectbox("Menu", ["Login", "Register", "Travel Itinerary Generator", "Mileage Tracker"])
-
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 if st.session_state.logged_in:
     st.success("You are logged in!")
-    st.rerun()
+    menu = st.sidebar.selectbox("Menu", ["Login", "Register", "Travel Itinerary Generator", "Mileage Tracker"])
+else: 
+    menu = st.sidebar.selectbox("Menu", ["Login", "Register"])
 
-    if st.button("Logout"):
+if session.state.logged_in: 
+    if menu == "logout":
         st.session_state.logged_in = False
-
+        st.rerun()
 else:
 
     if menu == "Register":
@@ -55,7 +56,6 @@ else:
             if login_user(username, password):
                 st.session_state.logged_in = True
                 st.success("Login successful!")
-                st.rerun()
             else:
                 st.error("Invalid login")
 
