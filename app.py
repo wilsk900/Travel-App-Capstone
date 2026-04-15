@@ -27,7 +27,7 @@ else:
     menu = st.sidebar.selectbox("Menu", ["Login", "Register"])
 
 #for each menu option when logged in
-if session.state.logged_in: 
+if st.session.state.logged_in: 
     if menu == "Logout":
         st.session_state.logged_in = False
         st.rerun()
