@@ -26,19 +26,8 @@ else:
     #only show when logged out
     menu = st.sidebar.selectbox("Menu", ["Login", "Register"])
 
-#for each menu option when logged in
-if st.session_state.logged_in: 
-    if menu == "Logout":
-        st.session_state.logged_in = False
-        st.rerun()
-
-    elif menu == "Travel Itinerary Generator":
-        show_itinerary(filtered_df)
-
-    elif menu == "Mileage Tracker":
-        mileage()
-        
-else:
+#for each menu option when logged out
+if not st.session_state.logged_in:
     if menu == "Register":
 
         st.subheader("Create Account")
@@ -67,3 +56,25 @@ else:
                 st.success("Login successful!")
             else:
                 st.error("Invalid login")
+
+    if menu == "Logout":
+        st.session_state.logged_in = False
+        st.rerun()
+
+    elif menu == "Travel Itinerary Generator":
+        show_itinerary(filtered_df)
+
+    elif menu == "Mileage Tracker":
+        mileage()
+        
+else:
+    #for each menu option when logged in
+    if menu == "Logout":
+        st.session_state.logged_in = False
+        st.rerun()
+
+    elif menu == "Travel Itinerary Generator":
+        show_itinerary(filtered_df)
+
+    elif menu == "Mileage Tracker":
+        mileage()
