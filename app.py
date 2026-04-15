@@ -14,22 +14,31 @@ try:
 except:
     st.error("Could not find the data file!")
     filtered_df = pd.DataFrame()
-
+#sessionstate
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
-
+#main menu setup 
 if st.session_state.logged_in:
+    #only show when logged in
     st.success("You are logged in!")
-    menu = st.sidebar.selectbox("Menu", ["Login", "Register", "Travel Itinerary Generator", "Mileage Tracker"])
+    menu = st.sidebar.selectbox("Menu", ["Travel Itinerary Generator", "Mileage Tracker", "Logout"])
 else: 
+    #only show when logged out
     menu = st.sidebar.selectbox("Menu", ["Login", "Register"])
 
+#for each menu option when logged in
 if session.state.logged_in: 
-    if menu == "logout":
+    if menu == "Logout":
         st.session_state.logged_in = False
         st.rerun()
-else:
 
+    elif menu == "Travel Itinerary Generator":
+        show_itinerary(filtered_df)
+
+    elif menu == "Mileage Tracker":
+        mileage()
+        
+else:
     if menu == "Register":
 
         st.subheader("Create Account")
@@ -58,11 +67,3 @@ else:
                 st.success("Login successful!")
             else:
                 st.error("Invalid login")
-
-    elif menu == "Travel Itinerary Generator":
-        show_itinerary(filtered_df)
-
-    elif menu == "Mileage Tracker":
-        mileage()
-        
-
