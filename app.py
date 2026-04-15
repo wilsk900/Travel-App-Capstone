@@ -21,10 +21,10 @@ if "logged_in" not in st.session_state:
 if st.session_state.logged_in:
     #only show when logged in
     st.success("You are logged in!")
-    menu = st.sidebar.selectbox("Menu", ["Travel Itinerary Generator", "Mileage Tracker", "Logout"])
+    menu = st.sidebar.selectbox("Menu", ["Travel Itinerary Generator", "Mileage Tracker", "Logout"]) #, key ="authenticated_sidebar") #unique id for logged in guests
 else: 
     #only show when logged out
-    menu = st.sidebar.selectbox("Menu", ["Login", "Register"])
+    menu = st.sidebar.selectbox("Menu", ["Login", "Register"]) #, key = "guest_sidebar")
 
 #for each menu option when logged out
 if not st.session_state.logged_in:
@@ -54,6 +54,7 @@ if not st.session_state.logged_in:
             if login_user(username, password):
                 st.session_state.logged_in = True
                 st.success("Login successful!")
+                st.rerun()
             else:
                 st.error("Invalid login")
 
