@@ -57,16 +57,6 @@ if not st.session_state.logged_in:
             else:
                 st.error("Invalid login")
 
-    if menu == "Logout":
-        st.session_state.logged_in = False
-        st.rerun()
-
-    elif menu == "Travel Itinerary Generator":
-        show_itinerary(filtered_df)
-
-    elif menu == "Mileage Tracker":
-        mileage()
-        
 else:
     #for each menu option when logged in
     if menu == "Logout":
