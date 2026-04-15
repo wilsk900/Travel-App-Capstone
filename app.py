@@ -3,6 +3,7 @@ from authentication import initialize_database, register_user, login_user
 import pandas as pd
 from itinerary import show_itinerary
 from mileage_tracker import mileage
+from budget_manager import money_manage
 
 initialize_database()
 
@@ -21,11 +22,10 @@ if "logged_in" not in st.session_state:
 if st.session_state.logged_in:
     #only show when logged in
     st.success("You are logged in!")
-    menu = st.sidebar.selectbox("Menu", ["Travel Itinerary Generator", "Mileage Tracker", "Logout"]) #, key ="authenticated_sidebar") #unique id for logged in guests
+    menu = st.sidebar.selectbox("Menu", ["Travel Itinerary Generator", "Mileage Tracker", "Trip Budget Planner", "Logout"])
 else: 
     #only show when logged out
-    menu = st.sidebar.selectbox("Menu", ["Login", "Register"]) #, key = "guest_sidebar")
-
+    menu = st.sidebar.selectbox("Menu", ["Login", "Register"])
 #for each menu option when logged out
 if not st.session_state.logged_in:
     if menu == "Register":
@@ -69,3 +69,6 @@ else:
 
     elif menu == "Mileage Tracker":
         mileage()
+
+    elif menu == "Trip Budget Planner":
+        money_manage()
