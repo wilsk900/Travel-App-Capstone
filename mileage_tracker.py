@@ -36,6 +36,7 @@ Travel Time: {time_traveled} hours
     st.text(summary)
 
     try:
+        prinyt("I am here")
         with open("my_itinerary.txt", "r") as f:
             itinerary_content = f.read()
     except FileNotFoundError:
