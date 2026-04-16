@@ -30,8 +30,8 @@ def mileage():
     try:
         with open("my_itinerary.txt", "r") as f:
             itinerary_content = f.read()
-        except FileNotFoundError:
-            itinerary_content = "No itinerary file found."
+    except FileNotFoundError:
+        itinerary_content = "No itinerary file found."
 
         combined_data = f"{summary}\n\n{itinerary_content}"
     
