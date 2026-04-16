@@ -1,7 +1,1 @@
 
-------------------------------
-Transportation Summary
-Total Distance: 40 miles
-Average Speed: 40 mph
-Travel Time: 1 hours
-------------------------------
