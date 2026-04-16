@@ -50,12 +50,3 @@ Travel Time: {time_traveled} hours
         file_name="mileage_cal.txt",
         mime="text/plain"
     )
-
-    summary = f"""
-------------------------------
-Transportation Summary
-Total Distance: {total_dist} miles
-Average Speed: {speed} mph
-Travel Time: {time_traveled} hours
-------------------------------
-"""
