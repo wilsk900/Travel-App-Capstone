@@ -45,8 +45,8 @@ Travel Time: {time_traveled} hours
     
     # Download Button
     st.download_button(
-        label="Add mileage calculations to itinerary",
+        label="Print mileage calculations for itinerary",
         data=combined_data,
-        file_name="full_travel_plan.txt",
+        file_name="mileage_cal.txt",
         mime="text/plain"
     )
