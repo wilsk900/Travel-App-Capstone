@@ -23,14 +23,6 @@ def mileage():
     
     st.table(breakdown)
 
-    summary = f"""
-    ------------------------------
-    Transportation Summary
-    Total Distance: {total_dist} miles
-    Average Speed: {speed} mph
-    Travel Time: {time_traveled} hours
-    ------------------------------
-    """
     st.session_state['mileage_summary'] = summary
     st.write("Summary saved!")
     st.text(summary)
@@ -50,3 +42,12 @@ def mileage():
         file_name="mileage_cal.txt",
         mime="text/plain"
     )
+
+    summary = f"""
+    ------------------------------
+    Transportation Summary
+    Total Distance: {total_dist} miles
+    Average Speed: {speed} mph
+    Travel Time: {time_traveled} hours
+    ------------------------------
+    """
