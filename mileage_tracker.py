@@ -27,6 +27,14 @@ def mileage():
     st.write("Summary saved!")
     st.text(summary)
 
+    summary = f"""
+------------------------------
+Transportation Summary
+Total Distance: {total_dist} miles
+Average Speed: {speed} mph
+Travel Time: {time_traveled} hours
+------------------------------
+"""
     #try:
     with open("my_itinerary.txt", "r") as f:
         itinerary_content = f.read()
