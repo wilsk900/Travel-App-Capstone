@@ -22,11 +22,7 @@ def mileage():
         breakdown.append({"Hour": hour, "Distance Traveled (miles)": distance})
     
     st.table(breakdown)
-
-    st.session_state['mileage_summary'] = summary
-    st.write("Summary saved!")
-    st.text(summary)
-
+    
     summary = f"""
 ------------------------------
 Transportation Summary
@@ -35,6 +31,11 @@ Average Speed: {speed} mph
 Travel Time: {time_traveled} hours
 ------------------------------
 """
+    
+    st.session_state['mileage_summary'] = summary
+    st.write("Summary saved!")
+    st.text(summary)
+
     #try:
     with open("my_itinerary.txt", "r") as f:
         itinerary_content = f.read()
