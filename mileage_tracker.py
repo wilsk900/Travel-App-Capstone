@@ -28,6 +28,7 @@ def mileage():
     st.text(summary)
 
     try:
+        print)('Here')
         with open("my_itinerary.txt", "r") as f:
             itinerary_content = f.read()
     except FileNotFoundError:
