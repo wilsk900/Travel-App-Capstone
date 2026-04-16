@@ -44,10 +44,10 @@ def mileage():
     )
 
     summary = f"""
-    ------------------------------
-    Transportation Summary
-    Total Distance: {total_dist} miles
-    Average Speed: {speed} mph
-    Travel Time: {time_traveled} hours
-    ------------------------------
-    """
+------------------------------
+Transportation Summary
+Total Distance: {total_dist} miles
+Average Speed: {speed} mph
+Travel Time: {time_traveled} hours
+------------------------------
+"""
