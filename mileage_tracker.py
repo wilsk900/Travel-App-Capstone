@@ -33,7 +33,7 @@ def mileage():
     except FileNotFoundError:
         itinerary_content = "No itinerary file found."
 
-        combined_data = f"{summary}\n\n{itinerary_content}"
+    combined_data = f"{summary}\n\n{itinerary_content}"
     
     # Download Button
     st.download_button(
