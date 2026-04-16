@@ -28,7 +28,7 @@ def mileage():
 Transportation Summary
 Total Distance: {total_dist} miles
 Average Speed: {speed} mph
-Travel Time: {travel_dist} hours
+Travel Time: {time_traveled} hours
 ------------------------------
 """
     
