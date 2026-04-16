@@ -24,29 +24,29 @@ def mileage():
     st.table(breakdown)
 
     summary = f"""
-------------------------------
-Transportation Summary
-Total Distance: {total_dist} miles
-Average Speed: {speed} mph
-Travel Time: {time_traveled} hours
-------------------------------
-"""
-st.session_state['mileage_summary'] = summary
-st.write("Summary saved!")
-st.text(summary)
+    ------------------------------
+    Transportation Summary
+    Total Distance: {total_dist} miles
+    Average Speed: {speed} mph
+    Travel Time: {time_traveled} hours
+    ------------------------------
+    """
+    st.session_state['mileage_summary'] = summary
+    st.write("Summary saved!")
+    st.text(summary)
 
-try:
-    with open("my_itinerary.txt", "r") as f:
-        itinerary_content = f.read()
-    except FileNotFoundError:
-        itinerary_content = "No itinerary file found."
+    try:
+        with open("my_itinerary.txt", "r") as f:
+            itinerary_content = f.read()
+        except FileNotFoundError:
+            itinerary_content = "No itinerary file found."
 
-    combined_data = f"{summary}\n\n{itinerary_content}"
+        combined_data = f"{summary}\n\n{itinerary_content}"
     
-# Download Button
-st.download_button(
-    label="Print mileage calculations for itinerary",
-    data=combined_data,
-    file_name="mileage_cal.txt",
-    mime="text/plain"
-)
+    # Download Button
+    st.download_button(
+        label="Print mileage calculations for itinerary",
+        data=combined_data,
+        file_name="mileage_cal.txt",
+        mime="text/plain"
+    )
