@@ -33,11 +33,14 @@ def show_itinerary(df):
     if e != "None": final_itinerary += f"- Evening: {e}\n"
     if f != "None": final_itinerary += f"- Food Option: {f}\n"
 
-    # saved itinerary and download
-    st.text(final_itinerary)
-    
+    # SAVE itinerary to session state
+    st.session_state['itinerary_summary'] = final_itinerary
+
+    st.success("Itinerary saved!")
+
+    # Optional download (you can keep or remove)
     st.download_button(
-        label="Save to .txt file",
+        label="Download Itinerary Only",
         data=final_itinerary,
-        file_name="my_itinerary.txt"
+        file_name="itinerary.txt"
     )
