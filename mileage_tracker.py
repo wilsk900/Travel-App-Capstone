@@ -36,18 +36,7 @@ Travel Time: {time_traveled} hours
     st.write("Summary saved!")
     st.text(summary)
 
-    #try:
-    with open("my_itinerary.txt", "r") as f:
-        itinerary_content = f.read()
-    #except FileNotFoundError:
-    #    itinerary_content = "No itinerary file found."
-
-    combined_data = f"{summary}\n\n{itinerary_content}"
+    #save mileage summary
+    st.session_state['mileage_summary'] = summary
+    st.success("Mileage saved!")
     
-    # Download Button
-    st.download_button(
-        label="Print mileage calculations for itinerary",
-        data=combined_data,
-        file_name="mileage_cal.txt",
-        mime="text/plain"
-    )
