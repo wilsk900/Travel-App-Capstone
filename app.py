@@ -74,30 +74,30 @@ else:
     elif menu == "Trip Budget Planner":
         money_manage()
 
-st.sidebar.header("Download Full Trip Plan")
+    st.sidebar.header("Download Full Trip Plan")
 
-if st.sidebar.button("Download Complete Trip File"):
+    if st.sidebar.button("Download Complete Trip File"):
 
-    itinerary = st.session_state.get('itinerary_summary', "No itinerary created")
-    mileage = st.session_state.get('mileage_summary', "No mileage data")
-    budget = st.session_state.get('budget_summary', "No budget data")
+        itinerary = st.session_state.get('itinerary_summary', "No itinerary created")
+        mileage = st.session_state.get('mileage_summary', "No mileage data")
+        budget = st.session_state.get('budget_summary', "No budget data")
 
-    data = {
-        "Category": ["Itinerary", "Mileage", "Budget"],
-        "Details": [itinerary, mileage, budget]
-    }
+        data = {
+            "Category": ["Itinerary", "Mileage", "Budget"],
+            "Details": [itinerary, mileage, budget]
+        }
 
-    df = pd.DataFrame(data)
+        df = pd.DataFrame(data)
 
-    output = io.BytesIO()
-    with pd.ExcelWriter(output) as writer:
-        df.to_excel(writer, index=False, sheet_name="Trip Summary")
+        output = io.BytesIO()
+        with pd.ExcelWriter(output) as writer:
+            df.to_excel(writer, index=False, sheet_name="Trip Summary")
 
-    excel_data = output.getvalue()
+        excel_data = output.getvalue()
 
-    st.sidebar.download_button(
-        label="Download Trip Summary (Excel)",
-        data=excel_data,
-        file_name="Trip_Summary.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
+        st.sidebar.download_button(
+            label="Download Trip Summary (Excel)",
+            data=excel_data,
+            file_name="Trip_Summary.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
