@@ -38,9 +38,9 @@ def show_itinerary(df):
 
     st.success("Itinerary saved!")
 
-    # Optional download (you can keep or remove)
-    st.download_button(
-        label="Download Itinerary Only",
-        data=final_itinerary,
-        file_name="itinerary.txt"
+st.text(final_itinerary)
+
+if st.button("Save Itinerary"):
+    st.session_state['itinerary_summary'] = final_itinerary
+    st.success("Itinerary saved!")
     )
