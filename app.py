@@ -90,7 +90,7 @@ if st.sidebar.button("Download Complete Trip File"):
     df = pd.DataFrame(data)
 
     output = io.BytesIO()
-    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+    with pd.ExcelWriter(output) as writer:
         df.to_excel(writer, index=False, sheet_name="Trip Summary")
 
     excel_data = output.getvalue()
