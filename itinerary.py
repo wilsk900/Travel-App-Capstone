@@ -1,16 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-def show_itinerary(filtered_df):
-    st.header("Travel Itinerary Generator")
-
-    df = pd.read_excel("countrydataset.xlsx")
-    st.write("Test dataset loaded")
-
-    #userchoice
-import streamlit as st
-import pandas as pd
-
 def show_itinerary(df):
     st.header("Daily Itinerary Builder")
 
@@ -33,14 +23,9 @@ def show_itinerary(df):
     if e != "None": final_itinerary += f"- Evening: {e}\n"
     if f != "None": final_itinerary += f"- Food Option: {f}\n"
 
-    # SAVE itinerary to session state
-    st.session_state['itinerary_summary'] = final_itinerary
+    st.text(final_itinerary)
 
-    st.success("Itinerary saved!")
-
-st.text(final_itinerary)
-
-if st.button("Save Itinerary"):
-    st.session_state['itinerary_summary'] = final_itinerary
-    st.success("Itinerary saved!")
-    )
+    # SAVE button (ONLY place this happens)
+    if st.button("Save Itinerary"):
+        st.session_state['itinerary_summary'] = final_itinerary
+        st.success("Itinerary saved!")
