@@ -4,6 +4,7 @@ import pandas as pd
 from itinerary import show_itinerary
 from mileage_tracker import mileage
 from budget_manager import money_manage
+import io
 
 initialize_database()
 
@@ -72,8 +73,6 @@ else:
 
     elif menu == "Trip Budget Planner":
         money_manage()
-
-import io
 
 st.sidebar.header("Download Full Trip Plan")
 
