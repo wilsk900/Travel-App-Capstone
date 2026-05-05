@@ -39,4 +39,3 @@ Travel Time: {time_traveled} hours
     #save mileage summary
     st.session_state['mileage_summary'] = summary
     st.success("Mileage saved!")
-    
